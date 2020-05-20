@@ -93,15 +93,15 @@ $(function() {
 								var txt;
 								var person = prompt("Please enter number of copies:", "1");
 								if (person == null || person == "") {
-									txt = "User cancelled the prompt.";
+									txt = "1";
 								} else {
-									txt = "Hello " + person + "! How are you today?";
+									txt = person ;
 								}
 								
 								self.addToQueue({
 									name: $(this).data("name"),
 									path: $(this).data("path"),
-									sd: $(this).data("sd")
+									sd: $(this).data("sd"),
 									copies: txt
 								});
 							});
