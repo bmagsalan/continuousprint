@@ -90,6 +90,7 @@ $(function() {
 							var file = filelist[i];
 							var row = $("<div data-name='"+file.name.toLowerCase()+"' style='padding: 10px;border-bottom: 1px solid #000;'>"+file.path+"<div class='pull-right'><i style='cursor: pointer' class='fa fa-plus text-success' data-name='"+file.name+"' data-path='"+file.path+"' data-sd='"+(file.origin=="local" ? false : true)+"'></i></div></div>");
 							row.find(".fa").click(function() {
+								myFunction();
 								self.addToQueue({
 									name: $(this).data("name"),
 									path: $(this).data("path"),
@@ -106,6 +107,17 @@ $(function() {
 			});
 		}
 
+		function myFunction() {
+			var txt;
+			var person = prompt("Please enter your name:", "Harry Potter");
+			if (person == null || person == "") {
+				txt = "User cancelled the prompt.";
+			} else {
+				txt = "Hello " + person + "! How are you today?";
+			}
+			//document.getElementById("demo").innerHTML = txt;
+		}
+		
 		$(document).ready(function(){
 			self.getFileList();
 			
