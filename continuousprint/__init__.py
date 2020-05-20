@@ -166,7 +166,8 @@ class ContinuousprintPlugin(octoprint.plugin.SettingsPlugin,
 	@octoprint.plugin.BlueprintPlugin.route("/addqueue", methods=["POST"])
 	@restricted_access
 	def add_queue(self):
-		for x in range(0, 5):
+		copies=int(flask.request.form["copies"])
+		for x in range(0, copies):
 			queue = json.loads(self._settings.get(["cp_queue"]))
 			queue.append(dict(
 				name=flask.request.form["name"],
