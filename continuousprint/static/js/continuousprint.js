@@ -97,13 +97,15 @@ $(function() {
 								} else {
 									txt = person ;
 								}
-								
-								self.addToQueue({
-									name: $(this).data("name"),
-									path: $(this).data("path"),
-									sd: $(this).data("sd"),
-									copies: txt
-								});
+								if( isNumeric(txt) ){
+									self.addToQueue({
+										name: $(this).data("name"),
+										path: $(this).data("path"),
+										sd: $(this).data("sd"),
+										copies: txt
+									});
+								}
+
 							});
 							$('#file_list').append(row);
 						}
@@ -114,7 +116,9 @@ $(function() {
 				}
 			});
 		}
-
+		function isNumeric(num){
+		   return !isNaN(num)
+		}
 	
 		$(document).ready(function(){
 			self.getFileList();
