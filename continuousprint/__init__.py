@@ -166,14 +166,15 @@ class ContinuousprintPlugin(octoprint.plugin.SettingsPlugin,
 	@octoprint.plugin.BlueprintPlugin.route("/addqueue", methods=["POST"])
 	@restricted_access
 	def add_queue(self):
-		queue = json.loads(self._settings.get(["cp_queue"]))
-		queue.append(dict(
-			name=flask.request.form["name"],
-			path=flask.request.form["path"],
-			sd=flask.request.form["sd"]
-		))
-		self._settings.set(["cp_queue"], json.dumps(queue))
-		self._settings.save()
+		for x in range(0, 5):
+			queue = json.loads(self._settings.get(["cp_queue"]))
+			queue.append(dict(
+				name=flask.request.form["name"],
+				path=flask.request.form["path"],
+				sd=flask.request.form["sd"]
+			))
+			self._settings.set(["cp_queue"], json.dumps(queue))
+			self._settings.save()
 		return flask.make_response("success", 200)
 	
 	@octoprint.plugin.BlueprintPlugin.route("/removequeue", methods=["DELETE"])
