@@ -93,7 +93,7 @@ $(function() {
 								var txt;
 								var person = prompt("Please enter number of copies:", "1");
 								if (person == null || person == "") {
-									txt = "1";
+									txt = "";
 								} else {
 									txt = person ;
 								}
